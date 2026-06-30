@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Gestão em Saúde</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <div class="cabecalho-inner">
+      <div>
+        <h1>Gestão em Saúde</h1>
+        <p class="subtitulo">Dashboard administrativo-financeiro</p>
+      </div>
+      <div class="filtros">
+        <select id="filtro-tipo">
+          <option value="todos">Todos os tipos</option>
+          <option value="SUS">SUS</option>
+          <option value="Particular">Particular</option>
+          <option value="Convênio">Convênio</option>
+        </select>
+        <select id="filtro-mes">
+          <option value="todos">Todos os meses</option>
+        </select>
+        <button id="btn-atualizar">Atualizar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- CARDS DE KPI -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">Total de consultas</span>
+        <span class="kpi-valor" id="kpi-total">—</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Receita total</span>
+        <span class="kpi-valor" id="kpi-receita">—</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Ticket médio</span>
+        <span class="kpi-valor" id="kpi-ticket">—</span>
+      </div>
+      <div class="kpi-card kpi-alerta">
+        <span class="kpi-label">Taxa de cancelamento</span>
+        <span class="kpi-valor" id="kpi-cancelamento">—</span>
+      </div>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section class="graficos-grid">
+      <div class="card">
+        <h2>Volume por tipo</h2>
+        <div class="grafico-container">
+          <canvas id="grafico-pizza"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Receita por mês</h2>
+        <div class="grafico-container">
+          <canvas id="grafico-barras"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABELA DE GARGALOS -->
+    <section class="card">
+      <h2>Análise de gargalos</h2>
+      <table class="tabela" id="tabela-gargalos">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Realizadas</th>
+            <th>Canceladas</th>
+            <th>Glosadas</th>
+            <th>Receita (R$)</th>
+            <th>Ticket médio</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-corpo">
+          <tr><td colspan="6" class="sem-dados">Carregando dados...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- RODAPÉ DE STATUS -->
+    <p class="status" id="status-msg">Aguardando dados...</p>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

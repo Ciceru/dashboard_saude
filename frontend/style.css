@@ -1,0 +1,226 @@
+/* style.css — Dashboard Gestão em Saúde */
+
+/* ── Reset e base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* ── Cabeçalho ── */
+.cabecalho {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.cabecalho-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cabecalho h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.subtitulo {
+  font-size: 0.8rem;
+  color: #a0a8c0;
+  margin-top: 2px;
+}
+
+/* ── Filtros ── */
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filtros select,
+.filtros button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #3a3a5c;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.filtros select {
+  background: #2a2a4a;
+  color: #fff;
+}
+
+.filtros button {
+  background: #4a90d9;
+  color: #fff;
+  border-color: #4a90d9;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.filtros button:hover { background: #357abd; }
+
+/* ── Conteúdo principal ── */
+.conteudo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Cards genéricos ── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.card h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Grid de KPIs ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.kpi-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 4px solid #4a90d9;
+}
+
+.kpi-alerta { border-left-color: #e05c5c; }
+
+.kpi-label {
+  font-size: 0.78rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.kpi-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.1;
+}
+
+.kpi-alerta .kpi-valor { color: #c0392b; }
+
+/* ── Grid de gráficos ── */
+.graficos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.grafico-container {
+  position: relative;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Tabela ── */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tabela thead th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid #e8e8f0;
+  color: #555;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tabela tbody tr {
+  border-bottom: 1px solid #f0f0f6;
+  transition: background 0.1s;
+}
+
+.tabela tbody tr:hover { background: #f7f8fc; }
+
+.tabela tbody td {
+  padding: 10px 12px;
+  color: #333;
+}
+
+.tabela tbody td:not(:first-child) {
+  text-align: right;
+}
+
+/* Badges de tipo na tabela */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-sus        { background: #dbeafe; color: #1d4ed8; }
+.badge-particular { background: #dcfce7; color: #15803d; }
+.badge-convenio   { background: #fef9c3; color: #854d0e; }
+.badge-geral      { background: #f1f0ff; color: #4f46e5; }
+
+/* Célula de alerta na tabela */
+.celula-alerta { color: #c0392b; font-weight: 600; }
+
+.sem-dados {
+  text-align: center;
+  padding: 2rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ── Status rodapé ── */
+.status {
+  font-size: 0.78rem;
+  color: #aaa;
+  text-align: right;
+}
+
+/* ── Responsivo mobile ── */
+@media (max-width: 600px) {
+  .conteudo { padding: 1rem; }
+  .cabecalho { padding: 1rem; }
+  .kpi-valor { font-size: 1.4rem; }
+  .tabela { display: block; overflow-x: auto; }
+}
